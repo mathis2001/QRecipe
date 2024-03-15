@@ -11,6 +11,11 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-w", "--wordlist", help="List of payloads to generate", required=True)
 args= parser.parse_args()
 
+class bcolors:
+    OK = '\033[92m'
+    FAIL = '\033[91m'
+    RESET = '\033[0m'
+
 def banner():
     print("""
 [47m  [0m[47m  [0m[47m  [0m[47m  [0m[47m  [0m[47m  [0m[47m  [0m[47m  [0m[47m  [0m[47m  [0m[47m  [0m[47m  [0m[47m  [0m[47m  [0m[47m  [0m[47m  [0m[47m  [0m[47m  [0m[47m  [0m[47m  [0m[47m  [0m[47m  [0m[47m  [0m[47m  [0m[47m  [0m[47m  [0m[47m  [0m
@@ -57,6 +62,7 @@ def display_qr_code(wordlist):
             filename = f"qr_code_{i+1}.png"
             generate_qr_code(payload, filename)
             img = Image.open(filename)
+            print(f'\n{bcolors.OK}[*]{bcolors.RESET} Opening QR code for {bcolors.OK}{payload}{bcolors.RESET}')
             img.show()
             time.sleep(1)
             os.remove(filename)
@@ -68,7 +74,7 @@ try:
     banner()
     main()
 except KeyboardInterrupt:
-    print(f'script canceled')
+    print(f'{bcolors.FAIL}[!]{bcolors.RESET} Script canceled')
 except Exception as e:
     print(e)
 
