@@ -9,7 +9,7 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-w", "--wordlist", help="List of payloads to generate", required=True)
-parser.add_argument("-d", "--delay", type=int, help="Time in seconds between each qr code generation", required=False)
+parser.add_argument("-d", "--delay", type=int, help="Time in seconds between each qr code generation (default=1s)", required=False)
 args= parser.parse_args()
 
 class bcolors:
