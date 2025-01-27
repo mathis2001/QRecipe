@@ -9,6 +9,7 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-w", "--wordlist", help="List of payloads to generate", required=True)
+parser.add_argument("-d", "--delay", type=int, help="Time in seconds between each qr code generation", required=False)
 args= parser.parse_args()
 
 class bcolors:
@@ -64,7 +65,10 @@ def display_qr_code(wordlist):
             img = Image.open(filename)
             print(f'\n{bcolors.OK}[*]{bcolors.RESET} Opening QR code for {bcolors.OK}{payload}{bcolors.RESET}')
             img.show()
-            time.sleep(1)
+            if args.delay:
+                time.sleep(args.delay)
+            else:
+                time.sleep(1)
             os.remove(filename)
 
 def main():
