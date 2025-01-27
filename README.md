@@ -11,7 +11,7 @@ $ python3 qrecipe.py
 ## Usage
 
 ```
-$ python3 qrecipe.py -w path/to/wordlist.txt
+$ python3 qrecipe.py -w path/to/wordlist.txt [-d 5]
 ```
 
 ## Screenshots and Records
